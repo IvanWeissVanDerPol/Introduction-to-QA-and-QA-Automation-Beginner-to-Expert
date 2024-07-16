@@ -26,3 +26,16 @@ Realiza una búsqueda en internet sobre las diferencias entre QA (Aseguramiento 
 
 ## Comparación
 Compara tus respuestas con el archivo `solucion_que_es_QA.md` para verificar tu comprensión.
+## Sugerencias para Mejorar
+
+1. **Incluir más ejercicios prácticos:** Añadir ejercicios que involucren la creación de casos de prueba, la ejecución de pruebas y la revisión de código.
+2. **Proveer retroalimentación detallada:** Incluir soluciones detalladas y explicaciones para cada ejercicio.
+
+## Mejoras sugeridas
+- **Ejercicio: ¿Qué es QA?:**
+  - Incluir ejercicios prácticos que involucren la revisión de un documento de requisitos y la identificación de posibles problemas de calidad.
+  - Proveer ejemplos de auditorías de calidad y ejercicios sobre cómo realizarlas.
+
+- **Fase del SDLC y Rol de QA:**
+  - Incluir ejercicios que involucren la creación de planes de pruebas y la definición de criterios de aceptación para diferentes fases del SDLC.
+  - Proveer estudios de caso para que los estudiantes analicen y apliquen lo aprendido.

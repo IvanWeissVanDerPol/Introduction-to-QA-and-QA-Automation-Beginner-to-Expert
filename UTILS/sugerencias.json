@@ -1,0 +1,211 @@
+[
+    {
+        "file_path": "Introduccion_QA_Automatizacion/01_Introduccion_QA/01_Que_es_QA.md",
+        "content_to_add": [
+            {
+                "section": "## Objetivos",
+                "content": "- Conocer las metodologías de QA como Six Sigma y Total Quality Management (TQM).\n- Aprender a implementar QA en diferentes etapas del ciclo de vida del software.\n- Entender la implementación de QA en metodologías ágiles y tradicionales."
+            },
+            {
+                "section": "### Definición de QA",
+                "content": "#### Ejemplos de Metodologías de QA\n- **Six Sigma:** Metodología que busca mejorar la calidad mediante la identificación y eliminación de las causas de defectos y variabilidad en los procesos.\n- **Total Quality Management (TQM):** Enfoque de gestión que busca mejorar la calidad de los productos y servicios a través de la mejora continua de los procesos internos."
+            },
+            {
+                "section": "### Importancia de QA",
+                "content": "#### Estadísticas y Estudios de Caso\n- **Estadísticas:** Según un estudio de Capers Jones, las organizaciones que implementan QA de manera efectiva pueden reducir los defectos en un 50-75%.\n- **Estudio de Caso:** La implementación de QA en la empresa XYZ resultó en una reducción del 60% en los defectos post-despliegue y un aumento del 40% en la satisfacción del cliente."
+            },
+            {
+                "section": "### Diferencia entre QA y QC",
+                "content": "#### Diagramas de Relación entre QA y QC\n(Insertar diagrama aquí)"
+            },
+            {
+                "section": "### Diferencia entre Pruebas y Depuración",
+                "content": "#### Flujo de Trabajo de Pruebas y Depuración\n(Insertar flujo de trabajo aquí)"
+            },
+            {
+                "section": "### Pruebas vs. QC vs. QA",
+                "content": "#### Ejemplos Prácticos y Situaciones\n- **QA:** Implementación de estándares de codificación y revisión de requisitos.\n- **QC:** Ejecución de pruebas automatizadas y revisiones de código.\n- **Pruebas:** Pruebas unitarias, de integración y de sistema."
+            },
+            {
+                "section": "### Integración en el Ciclo de Vida del Desarrollo de Software",
+                "content": "(Insertar diagrama de integración aquí)"
+            }
+        ]
+    },
+    {
+        "file_path": "Introduccion_QA_Automatizacion/01_Introduccion_QA/02_Ciclo_Vida_Desarrollo_Software.md",
+        "content_to_add": [
+            {
+                "section": "## Objetivos",
+                "content": "- Conocer herramientas y prácticas de cada fase del SDLC.\n- Aprender sobre modelos menos conocidos como el modelo espiral y DevOps.\n- Entender cómo aplicar QA en metodologías modernas como DevOps."
+            },
+            {
+                "section": "### Fases del SDLC",
+                "content": [
+                    {
+                        "phase": "1. **Planificación:**",
+                        "content": "- **Entregables:** Plan del proyecto, cronograma, análisis de riesgos.\n- **Herramientas:** Microsoft Project, Trello, Asana.\n- **Gestión de Riesgos:** QA puede ayudar a identificar y mitigar riesgos a través de la revisión de planes y la evaluación de posibles puntos de falla."
+                    },
+                    {
+                        "phase": "2. **Análisis de Requisitos:**",
+                        "content": "- **Entregables:** Documentos de requisitos, especificaciones funcionales.\n- **Técnicas:** Entrevistas, talleres de requisitos, análisis de casos de uso."
+                    },
+                    {
+                        "phase": "3. **Diseño:**",
+                        "content": "- **Entregables:** Diagramas UML, especificaciones de diseño.\n- **Ejemplos de Artefactos:** Diagramas de clases, diagramas de secuencia."
+                    },
+                    {
+                        "phase": "4. **Desarrollo:**",
+                        "content": "- **Entregables:** Código fuente, módulos integrados.\n- **Prácticas Ágiles:** TDD (Test-Driven Development), BDD (Behavior-Driven Development)."
+                    },
+                    {
+                        "phase": "5. **Pruebas:**",
+                        "content": "- **Entregables:** Informes de pruebas, casos de prueba, resultados de pruebas.\n- **Frameworks de Pruebas:** JUnit, pytest.\n- **Planes de Pruebas:** Crear y gestionar casos de prueba detallados y asegurar su completa ejecución."
+                    },
+                    {
+                        "phase": "6. **Implementación:**",
+                        "content": "- **Prácticas de Despliegue:** Despliegue continuo, DevOps."
+                    },
+                    {
+                        "phase": "7. **Mantenimiento:**",
+                        "content": "- **Gestión de Cambios:** Controlar y documentar todos los cambios en el sistema.\n- **Automatización de Pruebas de Regresión:** Asegurar que las nuevas versiones no afecten negativamente las funcionalidades existentes."
+                    }
+                ]
+            },
+            {
+                "section": "### Modelos del SDLC",
+                "content": [
+                    {
+                        "model": "- **Modelo Espiral:**",
+                        "content": "Combina elementos de los modelos en cascada y prototipos, ideal para proyectos grandes y complejos."
+                    },
+                    {
+                        "model": "- **Modelo DevOps:**",
+                        "content": "Integra desarrollo y operaciones para mejorar la colaboración y la eficiencia en el desarrollo y despliegue de software."
+                    }
+                ]
+            },
+            {
+                "section": "### Importancia de QA en el SDLC",
+                "content": "#### Diagramas y Referencias\n(Incluir diagramas de flujo del SDLC y referencias a materiales adicionales aquí)"
+            }
+        ]
+    },
+    {
+        "file_path": "Introduccion_QA_Automatizacion/01_Introduccion_QA/03_Tipos_Pruebas.md",
+        "content_to_add": [
+            {
+                "section": "## Objetivos",
+                "content": "- Conocer herramientas y técnicas específicas para cada tipo de prueba.\n- Aprender a diseñar casos de prueba efectivos."
+            },
+            {
+                "section": "### Pruebas Unitarias",
+                "content": "#### Herramientas y Frameworks\n- **NUnit para .NET**, **JUnit para Java**, **pytest para Python**."
+            },
+            {
+                "section": "### Pruebas de Integración",
+                "content": "- **Técnicas de Integración Continua:** Uso de herramientas como Jenkins, Travis CI y GitHub Actions para automatizar la integración y pruebas continuas."
+            },
+            {
+                "section": "### Pruebas de Sistema",
+                "content": "- **Pruebas de Extremo a Extremo:** Garantizar que todas las partes del sistema funcionen juntas como se espera desde la entrada del usuario hasta la salida final."
+            },
+            {
+                "section": "### Pruebas de Aceptación",
+                "content": "- **Criterios de Aceptación:** Definición clara de los criterios que el sistema debe cumplir para ser aceptado."
+            },
+            {
+                "section": "### Pruebas Funcionales",
+                "content": "- **Técnicas de Diseño de Casos de Prueba:**\n  - **Partición de Equivalencia:** Dividir el dominio de entrada en clases de equivalencia y probar casos representativos.\n  - **Análisis de Valores Límite:** Probar los límites de los valores de entrada."
+            },
+            {
+                "section": "### Pruebas No Funcionales",
+                "content": [
+                    {
+                        "sub_section": "#### Pruebas de Seguridad",
+                        "content": "- **Herramientas:** OWASP ZAP, Burp Suite.\n- **Ejemplo:** Probar la resistencia del sistema a ataques de inyección SQL."
+                    },
+                    {
+                        "sub_section": "#### Pruebas de Rendimiento",
+                        "content": "- **Herramientas:** JMeter, LoadRunner.\n- **Ejemplo:** Evaluar el rendimiento del sistema bajo diferentes niveles de carga."
+                    },
+                    {
+                        "sub_section": "#### Pruebas de Compatibilidad",
+                        "content": "- **Ejemplo:** Verificar que el sistema funcione en diferentes navegadores, dispositivos y sistemas operativos."
+                    }
+                ]
+            },
+            {
+                "section": "### Otros Tipos de Pruebas",
+                "content": [
+                    {
+                        "type": "- **Pruebas de Humo:**",
+                        "content": "Verifican las funcionalidades críticas del sistema para asegurar que funciona correctamente antes de realizar pruebas más detalladas."
+                    },
+                    {
+                        "type": "- **Pruebas Alfa y Beta:**",
+                        "content": "Pruebas realizadas por usuarios internos (alfa) y un grupo seleccionado de usuarios externos (beta) para detectar errores antes del lanzamiento oficial."
+                    }
+                ]
+            },
+            {
+                "section": "#### Ejemplo de Prueba de Humo",
+                "content": "```python\ndef test_prueba_de_humo():\n    assert iniciar_sesion(\"usuario\", \"contraseña\") == \"Inicio de sesión exitoso\"\n    assert cargar_pagina_principal() == \"Página principal cargada correctamente\"\n```"
+            }
+        ]
+    },
+    {
+        "file_path": "Introduccion_QA_Automatizacion/01_Introduccion_QA/04_Tecnicas_Testing.md",
+        "content_to_add": [
+            {
+                "section": "#### Testing Estático",
+                "content": [
+                    {
+                        "sub_section": "- **Herramientas Populares:**",
+                        "content": "- **SonarQube:** Para análisis estático de código y detección de defectos.\n- **ESLint:** Para análisis estático de código JavaScript.\n- **Pylint:** Para análisis estático de código Python."
+                    }
+                ]
+            },
+            {
+                "section": "### Essential Skills and Good Practices in Testing",
+                "content": [
+                    {
+                        "sub_section": "- **Estudios de Caso:**",
+                        "content": "- Ejemplos prácticos de cómo la implementación de buenas prácticas mejora la calidad del software."
+                    }
+                ]
+            },
+            {
+                "section": "### Static Testing",
+                "content": [
+                    {
+                        "sub_section": "- **Herramientas:**",
+                        "content": "- **SonarQube:** Analiza la calidad del código y mide la cobertura de pruebas.\n- **Checkstyle:** Verifica que el código Java cumpla con los estándares de codificación.\n- **FindBugs:** Detecta errores en programas Java mediante análisis estático."
+                    }
+                ]
+            },
+            {
+                "section": "### Test Analysis and Design",
+                "content": [
+                    {
+                        "sub_section": "- **Diseño de Prueba Basada en Riesgo:**",
+                        "content": "- Enfocar los esfuerzos de prueba en las áreas de mayor riesgo."
+                    }
+                ]
+            },
+            {
+                "section": "### Managing the Test Activities",
+                "content": [
+                    {
+                        "sub_section": "- **Herramientas de Gestión de Pruebas:**",
+                        "content": "- **TestRail:** Para gestionar casos de prueba y planificar actividades de prueba.\n- **JIRA:** Para seguimiento de defectos y gestión de proyectos.\n- **Zephyr:** Integración con JIRA para gestión de pruebas."
+                    }
+                ]
+            },
+            {
+                "section": "### Diagramas y Referencias",
+                "content": "(Incluir diagramas y referencias a materiales adicionales aquí)"
+            }
+        ]
+    }
+]
