@@ -1,23 +1,52 @@
-# Ejercicio: Fundamentos de Python
+# Tarea: Crear un Módulo de Calculadora
 
-## Descripción
-Realiza una serie de ejercicios para consolidar tu comprensión de los fundamentos de Python, incluyendo la instalación de Python, escritura de programas básicos, funciones, módulos y manipulación de datos.
+## Objetivo
 
-## Tareas
+Crear un módulo de Python para una calculadora utilizando Programación Orientada a Objetos (OOP) que incluya todas las operaciones matemáticas básicas. Luego, crear un archivo principal separado para importar y usar el módulo de la calculadora. Este módulo se utilizará más adelante para las tareas de pruebas en otra sección del curso.
 
-### Instalación y Programa Básico
-1. Instala Python en tu computadora siguiendo las instrucciones en [python.org](https://www.python.org/downloads/).
-2. Escribe un programa simple que imprima "¡Hola, mundo!".
+## Parte 1: Módulo de Calculadora
 
-### Funciones y Módulos
-1. Escribe una función que calcule el factorial de un número.
-2. Crea un módulo que contenga varias funciones matemáticas (suma, resta, multiplicación, división) y utilízalo en otro script.
-3. Investiga sobre las funciones lambda en Python y escribe un ejemplo de uso.
+### Paso 1: Crear el Módulo de Calculadora
 
-### Manipulación de Datos
-1. Crea una lista de números y encuentra la suma, el promedio y el número máximo.
-2. Crea un diccionario que almacene información de contacto (nombre, teléfono, email) y realiza operaciones de agregar, actualizar y eliminar contactos.
-3. Investiga sobre las comprensiones de listas (list comprehensions) en Python y escribe un ejemplo de uso.
+1. Crear un archivo llamado `calculadora.py`.
+2. Este archivo contendrá una clase `Calculadora` con métodos para cada operación matemática.
+3. Implementar los siguientes métodos en la clase `Calculadora`:
+   - Suma
+   - Resta
+   - Multiplicación
+   - División
+   - Módulo
+   - Exponenciación
+   - División Entera
+4. Asegurarse de que cada método:
+   - Tome dos entradas numéricas.
+   - Devuelva el resultado de la operación.
+   - Maneje adecuadamente casos especiales, como la división por cero.
 
-## Comparación
-Compara tus respuestas con los archivos de solución correspondientes para verificar tu comprensión.
+### Paso 2: Crear el Archivo Principal
+
+1. Crear un archivo llamado `main.py`.
+2. Este archivo importará y usará la clase `Calculadora` de `calculadora.py`.
+3. Implementar lo siguiente en `main.py`:
+   - Importar la clase `Calculadora`.
+   - Crear una instancia de la clase `Calculadora`.
+   - Realizar algunos cálculos utilizando los métodos de la clase `Calculadora`.
+   - Imprimir los resultados de los cálculos.
+
+### Paso 3: Probar la Calculadora
+
+1. Ejecutar `main.py`.
+2. Asegurarse de que todas las operaciones estén correctamente implementadas y muestren los resultados esperados.
+
+### Ejemplo de Salida
+
+```
+Operaciones de Calculadora
+10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+10 / 5 = 2.0
+10 % 5 = 0
+10 ** 5 = 100000
+10 // 5 = 2
+```
