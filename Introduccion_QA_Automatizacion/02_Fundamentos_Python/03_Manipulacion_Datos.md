@@ -98,4 +98,3 @@ Los conjuntos son colecciones desordenadas de elementos únicos.
 4. **Conjuntos:**
    - Los conjuntos eliminan automáticamente los elementos duplicados.
    - Son útiles para operaciones matemáticas como intersección, unión y diferencia de conjuntos.
-

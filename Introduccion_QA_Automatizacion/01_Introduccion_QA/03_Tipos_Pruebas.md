@@ -60,8 +60,6 @@
 - **Ejemplo Real:** Evaluar el rendimiento de la aplicación móvil de gestión de inventarios bajo diferentes niveles de carga para asegurar tiempos de respuesta aceptables.
   - **Importancia:** Asegura que el sistema puede manejar la carga esperada y sigue siendo rápido y eficiente bajo condiciones de alta demanda.
 
-
-
 ### Otros Tipos de Pruebas
 
 - **Pruebas de Regresión:** Verifican que los cambios recientes no hayan introducido nuevos defectos en el sistema.

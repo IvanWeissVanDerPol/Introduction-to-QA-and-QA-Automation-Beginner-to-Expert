@@ -25,7 +25,7 @@ Las pruebas unitarias son un tipo de prueba de software que verifica el funciona
 
 ### Escribiendo Pruebas Unitarias con unittest
 
-```python 
+```python
 # test_calculadora_unittest.py
 import unittest
 from calculator import Calculadora
@@ -86,4 +86,3 @@ def test_sumar(calculadora):
 - Cobertura: Asegurar que se prueban todos los casos posibles, incluyendo bordes y errores.
 - Nomenclatura: Utilizar nombres descriptivos para las pruebas y los métodos de prueba.
 - Automatización: Integrar las pruebas en el proceso de integración continua para ejecutarlas automáticamente en cada cambio de código.
-

@@ -40,7 +40,7 @@ Crear un módulo de Python para una calculadora utilizando Programación Orienta
 
 ### Ejemplo de Salida
 
-```
+```terminal
 Operaciones de Calculadora
 10 + 5 = 15
 10 - 5 = 5

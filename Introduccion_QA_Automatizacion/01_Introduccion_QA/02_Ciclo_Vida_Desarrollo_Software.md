@@ -80,7 +80,6 @@ La imagen a continuación muestra cómo se integra QA en cada fase del ciclo de 
    - **Automatización de Pruebas de Regresión:** Asegurar que las nuevas versiones no afecten negativamente las funcionalidades existentes.
    - **Ejemplo Real:** Durante el mantenimiento de la aplicación móvil de gestión de inventarios, QA realizaría pruebas de regresión para asegurar que las actualizaciones del sistema no afecten las funcionalidades existentes, como el seguimiento de inventarios y la generación de informes.
 
-
 ### Modelos del SDLC
 
 Existen varios modelos de SDLC, cada uno con sus propias características y enfoques:
@@ -91,4 +90,3 @@ Existen varios modelos de SDLC, cada uno con sus propias características y enfo
 ### Importancia de QA en el SDLC
 
 QA juega un papel crucial en cada fase del SDLC para asegurar que se cumplan los estándares de calidad y que el producto final cumpla con las expectativas del cliente. QA no es solo responsabilidad del equipo de pruebas, sino que debe integrarse en todo el proceso de desarrollo.
-

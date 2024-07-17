@@ -9,7 +9,7 @@
 
 ### ¿Qué son las Pruebas Automatizadas?
 
-Las pruebas automatizadas son el uso de herramientas de software para ejecutar pruebas predefinidas en una aplicación, comparar los resultados reales con los resultados esperados y generar informes sobre el éxito o fracaso de estas pruebas. 
+Las pruebas automatizadas son el uso de herramientas de software para ejecutar pruebas predefinidas en una aplicación, comparar los resultados reales con los resultados esperados y generar informes sobre el éxito o fracaso de estas pruebas.
 
 ### Importancia de las Pruebas Automatizadas
 

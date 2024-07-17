@@ -13,6 +13,7 @@ Asegúrate de tener pytest instalado en tu entorno. Puedes instalarlo usando el 
 ```bash
 pip install pytest
 ```
+
 ### Crear el archivo de pruebas
 
 Crea un archivo llamado `test_calculadora.py` en el mismo directorio donde se encuentra tu módulo `calculator.py`.
