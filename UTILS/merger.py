@@ -17,12 +17,7 @@ subfolders_to_include = [
     "02_Fundamentos_Python",
     "03_Pruebas_Automatizadas",
     "04_APIs_RESTful",
-    "05_Selenium_Basico",
-    "06_Selenium_Avanzado",
-    # "07_Framework_Automatizacion",
-    # "08_Temas_Avanzados",
-    # "09_Proyecto_Final",
-    # "10_Conclusion"
+    "05_Selenium_Basico"
 ]
 
 # Función para leer y escribir contenido de los archivos markdown
