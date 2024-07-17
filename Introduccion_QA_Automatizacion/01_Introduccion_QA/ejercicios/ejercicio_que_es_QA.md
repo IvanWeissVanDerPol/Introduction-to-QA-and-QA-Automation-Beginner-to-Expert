@@ -1,41 +1,112 @@
-# Ejercicio: ¿Qué es QA?
+# Tareas: Escritura de Casos de Prueba
 
-## Descripción
-Realiza una búsqueda en internet sobre las diferencias entre QA (Aseguramiento de la Calidad) y QC (Control de Calidad).
+## Objetivo
 
-## Tareas
+Los alumnos aprenderán a escribir casos de prueba efectivos a partir de tickets de requisitos/funcionalidades específicos. Estos casos de prueba cubrirán diversos tipos de pruebas: unitarias, de integración, de sistema, de aceptación, funcionales, no funcionales, y otros tipos mencionados anteriormente.
 
-### Diferencias entre QA y QC
-1. Lee el contenido sobre QA y realiza una búsqueda sobre las diferencias entre QA y QC.
+## Instrucciones
 
-### Fase del SDLC y Rol de QA
-1. Investiga más sobre cada fase del SDLC y cómo QA interviene en cada una de ellas.
-3. Compara diferentes modelos de SDLC y discute las ventajas y desventajas de cada uno.
+1. Revisa cada ticket de requisito/funcionalidad proporcionado.
+2. Escribe casos de prueba detallados para cada ticket, asegurándote de incluir todos los tipos de pruebas pertinentes.
+3. Utiliza el caso de prueba de ejemplo proporcionado como referencia para el formato y el nivel de detalle esperado.
 
-### Tipos de Pruebas
-1. Realiza una investigación sobre cada tipo de prueba y proporciona ejemplos de cada una.
-2. Crea un cuadro comparativo que resuma las características principales de cada tipo de prueba.
-3. Discute la importancia de las pruebas de regresión y cómo se implementan en un ciclo de desarrollo ágil.
+## Ejemplo de Caso de Prueba
 
-### Ejercicios Teóricos Adicionales
-1. Investiga y explica la importancia de las auditorías de calidad en el proceso de QA.
-2. Describe el proceso de revisión de requisitos y su importancia en QA.
-3. Define y explica el término "Mejora Continua" en el contexto de QA.
-4. Investiga sobre los diferentes estándares de calidad (ISO, IEEE) y su aplicación en QA.
-5. Explica la relación entre QA y la satisfacción del cliente.
+### Ticket: Validación del Campo de Contraseña
 
-## Comparación
-Compara tus respuestas con el archivo `solucion_que_es_QA.md` para verificar tu comprensión.
-## Sugerencias para Mejorar
+**Requisito:** El campo de contraseña en el formulario de registro debe aceptar entre 8 y 16 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.
 
-1. **Incluir más ejercicios prácticos:** Añadir ejercicios que involucren la creación de casos de prueba, la ejecución de pruebas y la revisión de código.
-2. **Proveer retroalimentación detallada:** Incluir soluciones detalladas y explicaciones para cada ejercicio.
+### Caso de Prueba: Validación de Contraseña
 
-## Mejoras sugeridas
-- **Ejercicio: ¿Qué es QA?:**
-  - Incluir ejercicios prácticos que involucren la revisión de un documento de requisitos y la identificación de posibles problemas de calidad.
-  - Proveer ejemplos de auditorías de calidad y ejercicios sobre cómo realizarlas.
+- **ID del Caso de Prueba:** TC001
+- **Descripción:** Verificar que el campo de contraseña acepta y valida correctamente las entradas según las especificaciones.
+- **Precondiciones:** El formulario de registro debe estar accesible.
+- **Pasos:**
+  1. Navegar al formulario de registro.
+  2. Ingresar "Pass123!" en el campo de contraseña.
+  3. Enviar el formulario.
+- **Resultado Esperado:** El sistema debe aceptar la contraseña "Pass123!" como válida.
+- **Resultado Real:**
+- **Estado:** (Pendiente/Ejecutado)
+- **Comentarios:**
 
-- **Fase del SDLC y Rol de QA:**
-  - Incluir ejercicios que involucren la creación de planes de pruebas y la definición de criterios de aceptación para diferentes fases del SDLC.
-  - Proveer estudios de caso para que los estudiantes analicen y apliquen lo aprendido.
+## Tickets para Pruebas
+
+### Ticket 1: Registro de Usuario
+
+**Requisito:** El formulario de registro debe permitir a los usuarios crear una cuenta proporcionando un nombre de usuario, contraseña, correo electrónico y número de teléfono.
+
+**Descripción:**
+El sistema debe ofrecer un formulario de registro donde los usuarios puedan ingresar sus datos para crear una nueva cuenta. Los campos obligatorios incluyen nombre de usuario, contraseña, correo electrónico y número de teléfono. La contraseña debe tener entre 8 y 16 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.
+
+**Criterios de Aceptación:**
+
+1. Todos los campos deben ser obligatorios.
+2. La contraseña debe cumplir con los requisitos de seguridad.
+3. El sistema debe verificar que el correo electrónico no esté registrado previamente.
+4. El formulario debe mostrar mensajes de error claros si algún campo no cumple con los requisitos.
+
+### Ticket 2: Inicio de Sesión
+
+**Requisito:** La funcionalidad de inicio de sesión debe permitir a los usuarios acceder a sus cuentas utilizando su nombre de usuario y contraseña.
+
+**Descripción:**
+El sistema debe proporcionar una página de inicio de sesión donde los usuarios puedan ingresar su nombre de usuario y contraseña para acceder a sus cuentas. Debe haber una opción para recuperar la contraseña en caso de olvido.
+
+**Criterios de Aceptación:**
+
+1. El usuario debe poder iniciar sesión con un nombre de usuario y contraseña válidos.
+2. El sistema debe mostrar un mensaje de error si las credenciales son incorrectas.
+3. Debe haber un enlace para recuperar la contraseña.
+
+### Ticket 3: Restablecimiento de Contraseña
+
+**Requisito:** El sistema debe permitir a los usuarios restablecer su contraseña enviando un enlace de restablecimiento a su correo electrónico registrado.
+
+**Descripción:**
+El sistema debe proporcionar una funcionalidad de restablecimiento de contraseña que envíe un enlace de restablecimiento al correo electrónico registrado del usuario. El enlace debe ser válido por un período de tiempo específico.
+
+**Criterios de Aceptación:**
+
+1. El usuario debe recibir un correo electrónico con un enlace de restablecimiento.
+2. El enlace de restablecimiento debe expirar después de un tiempo específico.
+3. El usuario debe poder ingresar una nueva contraseña que cumpla con los requisitos de seguridad.
+
+### Ticket 4: Agregar Producto al Carrito
+
+**Requisito:** Los usuarios deben poder agregar productos a su carrito de compras desde la página de detalles del producto.
+
+**Descripción:**
+En la página de detalles del producto, los usuarios deben tener la opción de seleccionar las características del producto (como tamaño y color) y agregar el producto a su carrito de compras.
+
+**Criterios de Aceptación:**
+
+1. El usuario debe poder seleccionar las características del producto antes de agregarlo al carrito.
+2. El sistema debe mostrar una confirmación cuando el producto se haya agregado al carrito.
+3. El carrito de compras debe actualizarse para reflejar el nuevo producto.
+
+### Ticket 5: Finalizar Compra
+
+**Requisito:** El sistema debe permitir a los usuarios finalizar su compra proporcionando detalles de envío y pago.
+
+**Descripción:**
+El sistema debe guiar a los usuarios a través de un proceso de finalización de compra, donde proporcionen detalles de envío y pago. Al completar la compra, el sistema debe generar una confirmación de pedido.
+
+**Criterios de Aceptación:**
+
+1. El usuario debe ingresar una dirección de envío válida.
+2. El sistema debe aceptar y validar la información de pago.
+3. El usuario debe recibir una confirmación de pedido después de completar la compra.
+
+### Ticket 6: Búsqueda de Productos
+
+**Requisito:** La barra de búsqueda debe permitir a los usuarios buscar productos por nombre, categoría o palabra clave.
+
+**Descripción:**
+El sistema debe proporcionar una barra de búsqueda en la parte superior de la página principal que permita a los usuarios buscar productos por nombre, categoría o palabra clave. Los resultados de la búsqueda deben mostrarse de manera relevante y ordenada.
+
+**Criterios de Aceptación:**
+
+1. El usuario debe poder ingresar texto en la barra de búsqueda.
+2. Los resultados deben mostrarse de manera relevante según el término de búsqueda.
+3. Los productos deben ser filtrables por categoría y otros atributos relevantes.
