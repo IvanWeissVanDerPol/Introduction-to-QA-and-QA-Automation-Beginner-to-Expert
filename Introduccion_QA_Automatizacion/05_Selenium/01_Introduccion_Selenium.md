@@ -1,5 +1,3 @@
-### 05_Selenium_Basico/01_Introduccion_Selenium.md
-
 # Introducción a Selenium
 
 ## Objetivos
