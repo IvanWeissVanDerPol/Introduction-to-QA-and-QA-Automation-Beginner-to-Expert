@@ -1,0 +1,12 @@
+# Python
+*.pyc
+__pycache__/
+
+# Environment
+.env
+.vscode/
+.idea/
+
+# Selenium
+logs/
+screenshots/
