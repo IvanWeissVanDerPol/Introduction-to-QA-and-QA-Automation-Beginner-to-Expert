@@ -36,11 +36,11 @@ Este proyecto utiliza Python y Selenium para automatizar pruebas en navegadores 
     source venv/bin/activate
     ```
 
-4. **Instala las dependencias desde `requirements.txt`:**
+4. **Instala las dependencias:**
 > asegurarse de estar en el virtual env antes de ejecutar esto (si seguiste los pasos deberias ya estar)
 
     ```bash
-    pip install -r requirements.txt
+    pip install pytest webdriver_manager selenium chromedriver_py
     ```
 
 ## Ejecutar Pruebas
@@ -52,3 +52,4 @@ pytest
 ```
 
 Puede ejecutar tambien las pruebas desde vs code
+
