@@ -1,0 +1,13 @@
+# Python
+*.pyc
+__pycache__/
+
+# Environments
+.env
+venv/
+.venv/
+
+# Editor files
+.vscode/
+.idea/
+.pytest_cache/
