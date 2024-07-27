@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "Introduccion_QA_Automatizacion"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
