@@ -40,7 +40,7 @@ Este proyecto utiliza Python y Selenium para automatizar pruebas en navegadores 
 > asegurarse de estar en el virtual env antes de ejecutar esto (si seguiste los pasos deberias ya estar)
 
     ```bash
-    pip install pytest webdriver_manager selenium chromedriver_py
+    pip install requirements.txt
     ```
 
 ## Ejecutar Pruebas

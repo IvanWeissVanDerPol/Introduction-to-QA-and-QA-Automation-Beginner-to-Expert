@@ -1,40 +1,78 @@
+# project/pages/login_page.py
+
+from pages.base_page import BasePage
+from utils.locator import LoginPageLocators
+import logging
 from selenium.webdriver.common.by import By
-from .base_page_with_header import BasePageWithHeader
+from pages.main_page import MainPage
 
-class LoginPage(BasePageWithHeader):
-    """
-    LoginPage handles the login process by interacting with the email, password,
-    and submit button elements on the login page.
-    """
-    EMAIL_FIELD = (By.ID, "email")
-    PASSWORD_FIELD = (By.ID, "pass")
-    SUBMIT_BUTTON = (By.ID, "send2")
-    ERROR_MESSAGE = (By.ID, "error-message-id")  # Example error message locator
+class LoginPage(BasePage):
+    def __init__(self, driver):
+        """
+        Initializes the LoginPage with the given WebDriver instance.
+        """
+        super().__init__(driver)
 
-    def login(self, email, password):
+    def select_user(self, user_name):
         """
-        Log in using the provided email and password.
+        Selects a user from the dropdown by text.
+        Logs the selection.
         """
-        self.clear_and_enter_text(self.EMAIL_FIELD, email)
-        self.clear_and_enter_text(self.PASSWORD_FIELD, password)
-        self.click_element(self.SUBMIT_BUTTON)
+        user_dropdown = self.find_element(LoginPageLocators.USER_SELECT)
+        for option in user_dropdown.find_elements(By.TAG_NAME, 'option'):
+            if option.text == user_name:
+                option.click()
+                logging.info(f"Selected user {user_name} from dropdown")
+                break
 
-    def clear_and_enter_text(self, locator, text):
+    def select_user_by_index(self, index):
         """
-        Clear the text field and enter new text.
-        This ensures no residual text interferes with the input.
+        Selects a user from the dropdown by index.
+        Logs the selection.
         """
-        element = self.wait_for_element(locator)
-        element.clear()
-        element.send_keys(text)
+        user_dropdown = self.find_element(LoginPageLocators.USER_SELECT)
+        options = user_dropdown.find_elements(By.TAG_NAME, 'option')
+        if 0 <= index < len(options):
+            options[index].click()
+            logging.info(f"Selected user {options[index].text} from dropdown")
+        else:
+            logging.error(f"Index {index} is out of range for user dropdown options")
 
-    def is_login_successful(self):
+    def click_login_button(self):
         """
-        Check if the login was successful by looking for the absence of an error message.
-        This method can be expanded to include other checks if necessary.
+        Clicks the login button.
+        Logs the action.
         """
-        try:
-            error_message = self.driver.find_element(*self.ERROR_MESSAGE)
-            return False
-        except Exception:
-            return True
+        self.click_element(LoginPageLocators.LOGIN_BUTTON)
+        logging.info("Clicked login button")
+
+    def login_user(self, user_name):
+        """
+        Logs in a user by selecting the username from a dropdown and clicking login.
+        Returns the MainPage object.
+        """
+        self.select_user(user_name)
+        self.click_login_button()
+        logging.info(f"Logged in user {user_name}")
+        return MainPage(self.driver)
+
+    def select_user_and_login(self, index):
+        """
+        Selects a user by index from the dropdown and clicks the login button.
+        """
+        self.select_user_by_index(index)
+        self.click_login_button()
+
+    def verify_user_dropdown_options(self):
+        """
+        Verifies the visibility of the user dropdown and its options.
+        """
+        user_dropdown = self.find_element(LoginPageLocators.USER_SELECT)
+        assert user_dropdown.is_displayed(), "User Dropdown is not visible"
+
+        options = user_dropdown.find_elements(By.TAG_NAME, 'option')
+        for option in options:
+            user_dropdown.click()
+            option.click()
+            selected_option = user_dropdown.find_element(By.CSS_SELECTOR, 'option:checked')
+            assert selected_option.text == option.text, "Selected text is not displayed in the dropdown"

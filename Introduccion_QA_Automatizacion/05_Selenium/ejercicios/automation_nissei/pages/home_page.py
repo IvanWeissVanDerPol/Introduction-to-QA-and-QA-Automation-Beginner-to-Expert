@@ -1,28 +1,56 @@
+﻿# project/pages/home_page.py
+
+import time
+from pages.base_page import BasePage
 from pages.login_page import LoginPage
-from pages.base_page_with_header import BasePageWithHeader
+from utils.locator import HomePageLocators
+import logging
 
-class HomePage(BasePageWithHeader):
-    """
-    HomePage represents the landing page after a successful login.
-    It includes methods to perform actions specific to the home page.
-    """
-    def login_with_credentials(self, username, email, password):
-        """
-        Log in with the provided credentials.
-        Redirects to the login page, performs login, and checks for success.
-        """
-        self.click_login(username)
-        login_page = LoginPage(self.driver)
-        login_page.login(email, password)
-        if login_page.is_login_successful():
-            return self
-        else:
-            raise Exception("Login failed")
+class HomePage(BasePage):
+    URL = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login"
 
-    def is_home_page_loaded(self):
+    def __init__(self, driver):
         """
-        Verify that the home page has loaded by checking for specific elements.
-        This can include verifying the presence of elements unique to the home page.
+        Initializes the HomePage and navigates to the URL.
         """
-        # Add checks specific to HomePage
-        pass
+        super().__init__(driver)
+        self.driver.get(self.URL)
+        logging.info("Navigated to Home Page URL")
+
+    def click_home(self):
+        """
+        Clicks the home button.
+        """
+        logging.info("Clicking on Home button")
+        self.click_element(HomePageLocators.HOME_BUTTON)
+
+    def verify_current_url(self, expected_url):
+        """
+        Verifies the current URL against the expected URL.
+        """
+        time.sleep(5)
+        current_url = self.driver.current_url
+        assert current_url == expected_url, f"Expected URL: {expected_url}, Actual URL: {current_url}"
+
+    def verify_url_changed(self, previous_url):
+        """
+        Verifies that the current URL is different from the previous URL.
+        """
+        time.sleep(5)
+        new_url = self.driver.current_url
+        assert new_url != previous_url, "URL has not changed after login"
+
+    def click_customer_login(self):
+        """
+        Clicks the customer login button and returns the LoginPage object.
+        """
+        logging.info("Clicking on Customer Login button")
+        self.click_element(HomePageLocators.CUSTOMER_LOGIN_BUTTON)
+        return LoginPage(self.driver)
+
+    def click_manager_login(self):
+        """
+        Clicks the manager login button.
+        """
+        logging.info("Clicking on Manager Login button")
+        self.click_element(HomePageLocators.MANAGER_LOGIN_BUTTON)

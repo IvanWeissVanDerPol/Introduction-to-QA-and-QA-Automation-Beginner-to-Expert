@@ -1,29 +1,18 @@
+# project/conftest.py
+
 import pytest
-from selenium import webdriver
-import chromedriver_py
+import logging
 
-from selenium.webdriver.chrome.service import Service
+def pytest_configure(config):
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+        logging.FileHandler("test_log.log"),
+        logging.StreamHandler()
+    ])
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope='session')
 def driver():
-    chrome_driver_path = chromedriver_py.binary_path
-    service = Service(executable_path=chrome_driver_path)
-    driver = webdriver.Chrome(service=service)
+    from selenium import webdriver
+    driver = webdriver.Chrome()
     driver.maximize_window()
     yield driver
     driver.quit()
-
-@pytest.fixture(scope="module")
-def config():
-    return {
-        "credentials": {
-            "username": "testuser",
-            "email": "test@example.com",
-            "password": "password123"
-        },
-        "google_credentials": {
-            "email": "fakemailpoli@gmail.com",
-            "password": "FakeMail123!"
-        },
-        "base_url": "https://nissei.com/py/"
-    }
