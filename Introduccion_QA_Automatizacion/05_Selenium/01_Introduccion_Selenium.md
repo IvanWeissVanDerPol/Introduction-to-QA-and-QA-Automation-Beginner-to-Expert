@@ -1,4 +1,4 @@
-# Introducción a Selenium
+### 01_Introducción a Selenium
 
 ## Objetivos
 
@@ -50,3 +50,76 @@ Selenium es ampliamente utilizado en la industria para diversas aplicaciones:
 - **Pruebas de Regresión:** Ejecutar un conjunto de pruebas para asegurarse de que los cambios recientes no han introducido nuevos errores.
 - **Pruebas de Integración Continua:** Integración con herramientas de CI/CD para ejecutar pruebas automatizadas en cada cambio de código.
 - **Scraping de Datos:** Automatizar la extracción de datos de páginas web.
+
+### Problemas Comunes y Cómo Resolverlos
+
+#### Problema 1: Controlador del Navegador no Encontrado
+**Solución**: Asegúrate de que el controlador del navegador (ChromeDriver, GeckoDriver, etc.) esté en tu PATH del sistema o proporciona la ruta absoluta al controlador.
+
+#### Problema 2: Elementos No Encontrados
+**Solución**: Utiliza esperas explícitas para asegurarte de que los elementos estén presentes antes de interactuar con ellos. Ejemplo en Python:
+```python
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+element = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.ID, "myElement"))
+)
+```
+
+#### Problema 3: Tiempo de Espera Excesivo
+**Solución**: Optimiza el uso de esperas y asegúrate de que las condiciones de espera sean específicas y no demasiado largas. Evita usar `time.sleep()` y prefiere las esperas explícitas.
+
+#### Problema 4: Compatibilidad de Versiones
+**Solución**: Asegúrate de que las versiones de Selenium, el controlador del navegador y el navegador sean compatibles entre sí. Revisa la documentación de Selenium para verificar las versiones compatibles.
+
+#### Problema 5: Scripts Lentos o Poco Confiables
+**Solución**: Revisa y optimiza tu código. Utiliza el patrón de diseño Page Object Model (POM) para mejorar la mantenibilidad y fiabilidad de los scripts. Asegúrate de manejar adecuadamente los errores y excepciones.
+
+### Mejores Prácticas
+
+- **Usa Esperas Explícitas**: Prefiere las esperas explícitas sobre las implícitas para un mejor control sobre las condiciones de espera.
+- **Page Object Model (POM)**: Organiza tu código creando clases para diferentes páginas, mejorando la mantenibilidad y la claridad de los scripts.
+- **Nombres Descriptivos**: Usa nombres descriptivos para variables y funciones para que el código sea fácil de entender.
+- **Manejo de Errores**: Implementa un manejo adecuado de errores para hacer tus pruebas más robustas.
+
+### Herramientas y Frameworks Complementarios
+
+- **pytest**: Para pruebas en Python.
+- **Jenkins**: Para integración continua.
+- **Appium**: Para pruebas en dispositivos móviles.
+
+### Recursos Adicionales
+
+- **Documentación Oficial de Selenium**: [Selenium Documentation](https://www.selenium.dev/documentation/en/)
+- **Foros y Comunidades**: [Stack Overflow](https://stackoverflow.com/questions/tagged/selenium), [SeleniumHQ Google Group](https://groups.google.com/g/selenium-users)
+- **Libros Recomendados**: "Selenium Testing Tools Cookbook" de Unmesh Gundecha, "Mastering Selenium WebDriver" de Mark Collin.
+
+### Ejemplos Prácticos
+
+#### Ejemplo en Python
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+# Inicializar el WebDriver
+driver = webdriver.Chrome()
+
+# Navegar a Google
+driver.get("http://www.google.com")
+
+# Encontrar la caja de búsqueda y realizar una búsqueda
+search_box = driver.find_element(By.NAME, "q")
+search_box.send_keys("Selenium WebDriver")
+search_box.send_keys(Keys.RETURN)
+
+# Asegurar que el título de la página contiene el texto esperado
+assert "Selenium WebDriver - Google Search" in driver.title
+
+# Cerrar el navegador
+driver.quit()
+```
+

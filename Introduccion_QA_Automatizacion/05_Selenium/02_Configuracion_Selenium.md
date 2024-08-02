@@ -1,73 +1,198 @@
-
-# Configuración de Selenium
+### Configuración de Selenium
 
 ## Objetivos
 
-- Aprender a instalar Selenium y el driver necesario para Chrome.
-- Configurar el entorno de desarrollo en Windows para utilizar Selenium de manera eficiente.
-- Integrar Selenium con VSCode.
+- Configurar el entorno de desarrollo en diferentes sistemas operativos para utilizar Selenium de manera eficiente.
 - Configurar el PATH para los drivers del navegador.
+- Entender la estructura y configuración del proyecto de pruebas.
 
 ## Contenido
 
-### Instalación de Selenium
+### Configuración en Diferentes SO
 
-#### Instalación de Selenium WebDriver con pip
+#### Windows
 
-Para instalar Selenium WebDriver en tu entorno de Python, puedes utilizar pip, el gestor de paquetes de Python. Ejecuta el siguiente comando en tu terminal:
+1. **Instalar Python**:
+   - Descarga el instalador de Python desde [python.org](https://www.python.org/downloads/windows/).
+   - Durante la instalación, selecciona "Add Python to PATH".
 
-```bash
-pip install selenium
-```
+2. **Instalar Selenium**:
+   ```sh
+   pip install selenium
+   ```
 
-#### Descarga e Instalación de ChromeDriver
-
-Para facilitar la instalación de ChromeDriver, utilizaremos el paquete `chromedriver-py`, que instala automáticamente la versión adecuada de ChromeDriver. Ejecuta el siguiente comando en tu terminal:
-
-```bash
-pip install chromedriver-py
-```
-
-Esto instalará ChromeDriver y lo hará disponible en tu entorno de Python.
+3. **Descargar y Configurar ChromeDriver**:
+   - Descarga ChromeDriver desde [aquí](https://sites.google.com/a/chromium.org/chromedriver/downloads).
+   - Extrae el ejecutable y colócalo en un directorio que esté en tu PATH del sistema.
 
 ### Configuración del Entorno de Desarrollo
 
-#### Integración con VSCode
+### Estructura del Proyecto
 
-1. Abre VSCode y crea un nuevo proyecto o abre un proyecto existente.
-2. Abre la terminal integrada (`Ctrl + '`).
-3. Asegúrate de que el entorno virtual (si lo tienes) esté activado y que Selenium y ChromeDriver estén instalados. Si no, instálalos usando:
+Para mantener tu proyecto organizado y manejable, sigue una estructura de directorios como la siguiente:
 
-   ```bash
-   pip install selenium chromedriver-py
-   ```
-
-### Ejemplo de Configuración en un Script Python
-
-Una vez que tengas Selenium y ChromeDriver configurados, puedes probar tu instalación con un script Python simple. Asegúrate de que `chromedriver.exe` esté en el directorio de tu proyecto.
-
-```python
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-import chromedriver_binary  # Adds chromedriver binary to path
-
-# Configuración del driver para Chrome
-driver = webdriver.Chrome()
-
-# Navegar a la página de Nissei
-driver.get('https://nissei.com/py/')
-
-# Encontrar el campo de búsqueda, introducir un término de búsqueda y enviar el formulario
-search_box = driver.find_element(By.NAME, 'q')
-search_box.send_keys('laptop')
-search_box.send_keys(Keys.RETURN)
-
-# Verificar que hay resultados de búsqueda
-assert 'resultados' in driver.page_source
-
-# Cerrar el navegador
-driver.quit()
+```
+project/
+│
+├── pages/
+│   ├── base_page.py
+│   ├── home_page.py
+│   ├── login_page.py
+│   ├── main_page.py
+│   └── transaction_page.py
+│
+├── tests/
+│   ├── base_test.py
+│   ├── test_account_main_page.py
+│   ├── test_customer_login_page.py
+│   ├── test_deposit_page.py
+│   ├── test_full_workflow.py
+│   ├── test_home_page.py
+│   └── test_withdraw_page.py
+│
+├── utils/
+│   ├── locator.py
+│   └── utils.py
+│
+├── conftest.py
+└── requirements.txt
 ```
 
-Este script debería abrir una instancia de Chrome, navegar a "https://nissei.com/py/", buscar el término "laptop", verificar que hay resultados de búsqueda y luego cerrar el navegador.
+### Explicación de la Configuración del Proyecto
+
+#### conftest.py
+
+El archivo `conftest.py` es utilizado por `pytest` para configurar el entorno de pruebas. Aquí se configura el logging y se define una fixture que inicializa y cierra el WebDriver para las pruebas.
+
+```python
+import pytest
+import logging
+
+def pytest_configure(config):
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+        logging.FileHandler("test_log.log"),
+        logging.StreamHandler()
+    ])
+
+@pytest.fixture(scope='session')
+def driver():
+    from selenium import webdriver
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    yield driver
+    driver.quit()
+```
+
+- **Configuración de Logging**: Se configura el logging para capturar información de depuración y errores. Los logs se guardan en un archivo `test_log.log` y también se muestran en la consola.
+- **Fixture `driver`**: Define el ciclo de vida del WebDriver, desde su inicialización hasta su cierre, utilizando `yield` para proporcionar el WebDriver a las pruebas.
+
+#### utils/utils.py
+
+Este archivo contiene funciones de utilidad para manejar esperas explícitas y otras tareas comunes.
+
+```python
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import logging
+
+def wait_for_page_load(driver, timeout=20):
+    WebDriverWait(driver, timeout).until(
+        lambda d: d.execute_script('return document.readyState') == 'complete'
+    )
+
+def wait_for_element(driver, by, value, timeout=20):
+    return WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, value)))
+
+def login_user(driver, username):
+    from pages.home_page import HomePage
+    from pages.login_page import LoginPage
+
+    logging.info(f"Logging in user: {username}")
+    homepage = HomePage(driver)
+    homepage.click_customer_login()
+    logging.info("Navigated to Customer Login page")
+    login_page = LoginPage(driver)
+    login_page.login_user(username)
+    logging.info(f"User {username} logged in successfully")
+```
+
+- **wait_for_page_load**: Espera hasta que la página esté completamente cargada.
+- **wait_for_element**: Espera hasta que un elemento específico sea visible en la página.
+- **login_user**: Realiza el proceso de inicio de sesión para un usuario específico.
+
+#### pages/base_page.py
+
+La clase `BasePage` proporciona métodos comunes para interactuar con elementos de la página.
+
+```python
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.remote.webelement import WebElement
+from utils.utils import wait_for_page_load
+import os
+import time
+import logging
+
+class BasePage:
+    def __init__(self, driver):
+        self.driver = driver
+        wait_for_page_load(self.driver)
+        logging.info("Page loaded successfully.")
+
+    def find_element(self, locator, timeout=20) -> WebElement or None:
+        try:
+            logging.info(f"Trying to find element by {locator[0]} with value {locator[1]}")
+            element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((locator[0], locator[1])))
+            logging.info(f"Element found: {locator[0]} with value {locator[1]}")
+            return element
+        except Exception as e:
+            logging.error(f"Error finding element by {locator[0]} with value {locator[1]}: {e}")
+            self.capture_screenshot(f"error_{locator[0]}_{locator[1]}")
+            return None
+        
+    def find_elements(self, locator, timeout=20) -> list[WebElement] or None:
+        try:
+            logging.info(f"Trying to find elements by {locator[0]} with value {locator[1]}")
+            elements = WebDriverWait(self.driver, timeout).until(EC.visibility_of_all_elements_located((locator[0], locator[1])))
+            logging.info(f"Elements found: {locator[0]} with value {locator[1]}")
+            return elements
+        except Exception as e:
+            logging.error(f"Error finding elements by {locator[0]} with value {locator[1]}: {e}")
+            self.capture_screenshot(f"error_{locator[0]}_{locator[1]}")
+            return []
+
+    def click_element(self, locator, timeout=20):
+        logging.info(f"Attempting to click element by {locator[0]} with value {locator[1]}")
+        element = self.find_element(locator, timeout)
+        if element:
+            element.click()
+            logging.info(f"Clicked element by {locator[0]} with value {locator[1]}")
+        else:
+            logging.error(f"Failed to click element by {locator[0]} with value {locator[1]}")
+
+    def enter_text(self, locator, text, timeout=
+
+20):
+        logging.info(f"Attempting to enter text into element by {locator[0]} with value {locator[1]}")
+        element = self.find_element(locator, timeout)
+        if element:
+            element.clear()
+            element.send_keys(text)
+            logging.info(f"Entered text '{text}' into element by {locator[0]} with value {locator[1]}")
+        else:
+            logging.error(f"Failed to enter text into element by {locator[0]} with value {locator[1]}")
+
+    def capture_screenshot(self, name="screenshot"):
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        screenshot_name = f"{name}_{timestamp}.png"
+        screenshot_path = os.path.join("screenshots", screenshot_name)
+        self.driver.save_screenshot(screenshot_path)
+        logging.info(f"Screenshot saved to {screenshot_path}")
+```
+
+- **find_element**: Encuentra un único elemento en la página usando un localizador específico.
+- **find_elements**: Encuentra múltiples elementos en la página.
+- **click_element**: Hace clic en un elemento localizado.
+- **enter_text**: Ingresa texto en un campo de entrada localizado.
+- **capture_screenshot**: Captura una captura de pantalla y la guarda con un nombre basado en la marca de tiempo.
+
